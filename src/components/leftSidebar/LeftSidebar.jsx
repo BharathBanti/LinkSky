@@ -125,7 +125,7 @@ const LSList = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--color-grey-400);
+    background: var(--color-brand-200);
     border-radius: 10px;
   }
 `;
