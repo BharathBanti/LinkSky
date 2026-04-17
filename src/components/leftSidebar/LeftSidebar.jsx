@@ -29,7 +29,7 @@ const LSNav = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  div {
+  > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -179,6 +179,67 @@ const Friends = styled.div`
   }
 `;
 
+const MenuWrapper = styled.div`
+  position: relative;
+`;
+
+const MenuIcon = styled.div`
+  cursor: pointer;
+
+  svg {
+    width: 22px;
+    height: 22px;
+    color: var(--color-brand-600);
+  }
+`;
+
+const Dropdown = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 120%;
+  right: 0;
+  border-radius: 10px;
+  background: var(--color-grey-0);
+  border: 1px solid var(--color-grey-200);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: 0.2s;
+`;
+
+const MenuWrapperHover = styled(MenuWrapper)`
+  &:hover ${Dropdown} {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+`;
+
+const Item = styled.div`
+  font-size: 14px;
+  padding: 10px;
+  width: 100px;
+  margin: 0;
+  color: var(--color-grey-700);
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 10px;
+
+  &:hover {
+    background: var(--color-grey-100);
+  }
+`;
+
+/* DIVIDER */
+const Divider = styled.hr`
+  border: none;
+  border-top: 1px solid var(--color-grey-300);
+  margin: 0;
+`;
+
 function LeftSidebar() {
   return (
     <StyledLeftSidebar>
@@ -188,7 +249,16 @@ function LeftSidebar() {
             <LinkSkyLogo src={assets.logo} alt="LinkSky-logo" />
             <span>LinkSky</span>
           </div>
-          <MoreVertical />
+          <MenuWrapperHover>
+            <MenuIcon>
+              <MoreVertical />
+            </MenuIcon>
+            <Dropdown>
+              <Item>Edit Profile</Item>
+              <Divider />
+              <Item style={{ color: 'red' }}>Logout</Item>
+            </Dropdown>
+          </MenuWrapperHover>
         </LSNav>
 
         <LSSearch>

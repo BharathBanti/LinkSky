@@ -4,6 +4,7 @@ import Button from '../../ui/Button';
 import styled from 'styled-components';
 import assets from '../../assets/assets';
 import { LogIn, UserPlus } from 'lucide-react';
+import { supabase } from '../../services/supabase';
 
 const LoginContainer = styled.div`
   min-height: 100vh;
@@ -114,6 +115,12 @@ const LoginForgot = styled.div`
 
 function Login() {
   const [currentState, setCurrentState] = useState('signUp');
+
+  // const [userName, setUserName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+
+  console.log(supabase);
 
   return (
     <LoginContainer>
